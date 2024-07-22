@@ -1,0 +1,51 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "Order",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "orderGeneratedId": {
+      "type": "string"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "nouvelle_commande",
+        "accepte",
+        "rejete",
+        "en_production",
+        "commande_prete",
+        "livraison_en_cours",
+        "livre"
+      ],
+      "default": "accepte",
+      "required": true
+    },
+    "delivery": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::delivery.delivery",
+      "inversedBy": "orders"
+    },
+    "customer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::cookeza-user.cookeza-user",
+      "inversedBy": "orders"
+    },
+    "order_packs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::order-pack.order-pack",
+      "inversedBy": "orders"
+    }
+  }
+}

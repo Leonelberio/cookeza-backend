@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "delivery_guys",
+  "info": {
+    "singularName": "delivery-guy",
+    "pluralName": "delivery-guys",
+    "displayName": "Delivery Guy",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "phone": {
+      "type": "string",
+      "required": true
+    },
+    "address": {
+      "type": "text"
+    },
+    "deliveries": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::delivery.delivery",
+      "mappedBy": "delivery_guy"
+    }
+  }
+}
